@@ -2,7 +2,7 @@ require("regenerator-runtime/runtime");
 const suite = require('token-test-suite/lib/suite');
 const UniqueTokenMintable = artifacts.require('UniqueTokenMintable');
 
-contract.only('UniqueTokenMintable', function (accounts) {
+contract('UniqueTokenMintable', function (accounts) {
 	let options = {
 		// accounts to test with, accounts[0] being the contract owner
 		accounts: accounts,
