@@ -11,13 +11,20 @@ import "../curvefi/ICurveFi_DepositY.sol";
 import "../curvefi/ICurveFi_SwapY.sol";
 import "../curvefi/IYERC20.sol";
 
+/** 
+ * @dev Test stub for the implementation of Curve.Fi deposit contract for Y-pool.
+ * @dev Original code is located in official repository:
+ * https://github.com/curvefi/curve-contract/blob/master/contracts/pools/y/DepositY.vy
+ */
 contract Stub_CurveFi_DepositY is ICurveFi_DepositY, Initializable, Context {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 
     uint256 public constant N_COINS = 4;
 
+    //Curve.Fi Swap address
     address public __curve;
+    //Curve.Fi LP token
     address public __token;
     address[N_COINS] __coins;
     address[N_COINS] __underlying;
@@ -74,7 +81,7 @@ contract Stub_CurveFi_DepositY is ICurveFi_DepositY, Initializable, Context {
 
         IERC20(__token).safeTransferFrom(_msgSender(), address(this), _tokens);
 
-        IERC20(__token).approve(__curve, _tokens);        
+        IERC20(__token).approve(__curve, _tokens);
         ICurveFi_SwapY(__curve).remove_liquidity_imbalance(amounts, max_burn_amount);
 
         //Transfer unused tokens back

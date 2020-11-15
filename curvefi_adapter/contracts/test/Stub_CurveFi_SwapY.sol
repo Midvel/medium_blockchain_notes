@@ -12,6 +12,11 @@ import "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol";
 import "../curvefi/IYERC20.sol";
 import "../curvefi/ICurveFi_SwapY.sol";
 
+/** 
+ * @dev Test stub for the implementation of Curve.Fi swap contract for Y-pool.
+ * @dev Original code is located in official repository:
+ * https://github.com/curvefi/curve-contract/blob/master/contracts/pools/y/StableSwapY.vy
+ */
 contract Stub_CurveFi_SwapY is ICurveFi_SwapY, Initializable, Context {
     using SafeMath for uint256;
 
@@ -68,6 +73,7 @@ contract Stub_CurveFi_SwapY is ICurveFi_SwapY, Initializable, Context {
         for (uint256 i=0; i < N_COINS; i++){
             IYERC20(__coins[i]).transfer(_msgSender(), amounts[i]);
         }
+
         require(max_burn_amount == 0 || token_amount <= max_burn_amount, "Min burn amount failed");
         ERC20Burnable(__token).burnFrom(_msgSender(), token_amount);
     }
@@ -76,7 +82,7 @@ contract Stub_CurveFi_SwapY is ICurveFi_SwapY, Initializable, Context {
 
         uint256 mint_amount;
         if (IERC20(__token).totalSupply() > 0) {
-            mint_amount = change_token_amount_with_fees(amounts, false);
+            mint_amount = change_token_amount_with_fees(amounts, true);
         }
         else {
             uint256 total;
@@ -131,9 +137,9 @@ contract Stub_CurveFi_SwapY is ICurveFi_SwapY, Initializable, Context {
         uint256 total;
         for (i = 0; i < N_COINS; i++) {
             if (deposit)
-                new_balances[i] = old_balances[i] + amounts[i];
+                new_balances[i] = old_balances[i].add(amounts[i]);
             else
-                new_balances[i] = old_balances[i] - amounts[i];
+                new_balances[i] = old_balances[i].sub(amounts[i]);
             total += normalize(__coins[i], amounts[i]);
         }
 
@@ -142,7 +148,7 @@ contract Stub_CurveFi_SwapY is ICurveFi_SwapY, Initializable, Context {
         
         uint256 _fee = __fee * N_COINS / (4 * (N_COINS - 1));
         for (i = 0; i < N_COINS; i++) {
-            uint256 ideal_balance = old_balances[i].mul(9800).div(10000);//D1 * old_balances[i] / D0;
+            uint256 ideal_balance = old_balances[i].mul(9900).div(10000);//D1 * old_balances[i] / D0;
             uint256 difference;
             if (ideal_balance > new_balances[i])
                 difference = ideal_balance - new_balances[i];
@@ -151,10 +157,6 @@ contract Stub_CurveFi_SwapY is ICurveFi_SwapY, Initializable, Context {
             uint256 fee = _fee * difference / (10 ** 10);
             
             new_balances[i] = new_balances[i].sub(fee);
-            if (deposit)
-                total -= normalize(__coins[i], fee);
-            else
-                total += normalize(__coins[i], fee);
         }
 
     //Step 3
@@ -188,7 +190,7 @@ contract Stub_CurveFi_SwapY is ICurveFi_SwapY, Initializable, Context {
     }
 
     function balances(int128 i) public view returns(uint256) {
-        return __balances[uint256(i)];
+        return __balances[uint256(i)];//IERC20(__coins[uint256(i)]).balanceOf(address(this));
     }
 
     function A() public view returns(uint256) {

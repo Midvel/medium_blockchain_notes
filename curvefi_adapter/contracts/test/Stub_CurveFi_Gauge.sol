@@ -9,6 +9,11 @@ import "@openzeppelin/contracts-ethereum-package/contracts/math/SafeMath.sol";
 import "../curvefi/ICurveFi_Minter.sol";
 import "../curvefi/ICurveFi_Gauge.sol";
 
+/** 
+ * @dev Test stub for the implementation of Curve.Fi CRV staking Gauge contract.
+ * @dev Original code is located in official repository:
+ * https://github.com/curvefi/curve-dao-contracts/blob/master/contracts/LiquidityGauge.vy
+ */
 contract Stub_CurveFi_Gauge is ICurveFi_Gauge, Initializable, Context {
     using SafeMath for uint256;
 
@@ -110,6 +115,8 @@ contract Stub_CurveFi_Gauge is ICurveFi_Gauge, Initializable, Context {
                 _integrate_inv_supply += INITIAL_RATE * dt / _working_supply;
             }
         }
+        //Simplification - always mint a couple of tokens
+        _integrate_inv_supply += 2;
 
         period += 1;
         period_timestamp = block.timestamp;

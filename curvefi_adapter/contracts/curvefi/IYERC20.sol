@@ -13,7 +13,7 @@ contract IYERC20 {
     function symbol() external view returns (string memory);
     function decimals() external view returns (uint8);
 
-    //yToken functions
+    //Y-token functions
     function deposit(uint256 amount) external;
     function withdraw(uint256 shares) external;
     function getPricePerFullShare() external view returns (uint256);

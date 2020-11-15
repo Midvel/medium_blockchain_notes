@@ -1,5 +1,10 @@
 pragma solidity ^0.5.12;
 
+/** 
+ * @dev Interface for Curve.Fi CRV staking Gauge contract.
+ * @dev See original implementation in official repository:
+ * https://github.com/curvefi/curve-dao-contracts/blob/master/contracts/LiquidityGauge.vy
+ */
 interface ICurveFi_Gauge {
     function lp_token() external view returns(address);
     function crv_token() external view returns(address);

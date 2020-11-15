@@ -11,6 +11,9 @@ import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Mint
 import "../curvefi/IYERC20.sol";
 
 
+/**
+ * @dev Simplified stub to imitate wrapped Y-token from yearn.finance
+ */
 contract Stub_YERC20 is IYERC20, Initializable, Context, ERC20, ERC20Detailed {
     uint256 constant EXP_SCALE = 1e18;
     uint256 constant INITIAL_RATE = 1 * EXP_SCALE;
@@ -19,8 +22,8 @@ contract Stub_YERC20 is IYERC20, Initializable, Context, ERC20, ERC20Detailed {
     ERC20Mintable public underlying;
     uint256 created;
 
-    function initialize(address _underlying, uint8 uDecimals) public initializer {
-        ERC20Detailed.initialize("YToken", "Y",uDecimals);
+    function initialize(address _underlying, string memory symb, uint8 uDecimals) public initializer {
+        ERC20Detailed.initialize("YToken", symb, uDecimals);
         underlying = ERC20Mintable(_underlying);
         prev_time = now;
     }

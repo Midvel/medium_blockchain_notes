@@ -1,5 +1,10 @@
 pragma solidity ^0.5.12;
 
+/** 
+ * @dev Interface for Curve.Fi deposit contract for Y-pool.
+ * @dev See original implementation in official repository:
+ * https://github.com/curvefi/curve-contract/blob/master/contracts/pools/y/DepositY.vy
+ */
 contract ICurveFi_DepositY { 
     function add_liquidity(uint256[4] calldata uamounts, uint256 min_mint_amount) external;
     function remove_liquidity(uint256 _amount, uint256[4] calldata min_uamounts) external;

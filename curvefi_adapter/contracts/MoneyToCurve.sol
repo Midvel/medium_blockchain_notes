@@ -68,6 +68,7 @@ contract MoneyToCurve is Initializable, Context, Ownable {
 
         //Step 2 - stake Curve LP tokens into Gauge and get CRV rewards
         uint256 curveLPBalance = IERC20(curveFi_LPToken).balanceOf(address(this));
+
         IERC20(curveFi_LPToken).safeApprove(curveFi_LPGauge, curveLPBalance);
         ICurveFi_Gauge(curveFi_LPGauge).deposit(curveLPBalance);
 
@@ -77,6 +78,7 @@ contract MoneyToCurve is Initializable, Context, Ownable {
         IERC20(curveFi_CRVToken).safeTransfer(_msgSender(), crvAmount);
 
     }
+
 
     /**
      * @notice Withdraws 4 stablecoins (registered in Curve.Fi Y pool)
@@ -96,13 +98,13 @@ contract MoneyToCurve is Initializable, Context, Ownable {
 
         //Check if you can re-use unstaked LP tokens
         uint256 notStaked = curveLPTokenUnstaked();
-        if (notStaked <= withdrawShares) {
+        if (notStaked > 0) {
             withdrawShares = withdrawShares.sub(notStaked);
         }
 
         //Step 2 - Unstake Curve LP tokens from Gauge
         ICurveFi_Gauge(curveFi_LPGauge).withdraw(withdrawShares);
-
+    
         //Step 3 - Withdraw stablecoins from CurveDeposit
         IERC20(curveFi_LPToken).safeApprove(curveFi_Deposit, withdrawShares);
         ICurveFi_DepositY(curveFi_Deposit).remove_liquidity_imbalance(_amounts, withdrawShares);
@@ -154,7 +156,7 @@ contract MoneyToCurve is Initializable, Context, Ownable {
         uint256 nBalance = normalizedBalance();
         uint256 poolShares = curveLPTokenBalance();
         
-        return poolShares.mul(normalizedWithdraw).div(nBalance).div(1e18);
+        return poolShares.mul(normalizedWithdraw).div(nBalance);
     }
 
     /**

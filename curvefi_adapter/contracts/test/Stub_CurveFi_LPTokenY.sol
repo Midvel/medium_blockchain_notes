@@ -9,6 +9,9 @@ import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Mint
 import "@openzeppelin/contracts-ethereum-package/contracts/token/ERC20/ERC20Burnable.sol";
 
 
+/**
+ * @dev Simplified stub to imitate Curve.Fi LP-token
+ */
 contract Stub_CurveFi_LPTokenY is Initializable, Context, ERC20, ERC20Detailed, ERC20Mintable, ERC20Burnable {
     function initialize() public initializer {
         ERC20Mintable.initialize(_msgSender());

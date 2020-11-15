@@ -9,6 +9,11 @@ import "../curvefi/ICurveFi_Minter.sol";
 import "../curvefi/ICurveFi_Gauge.sol";
 
 
+/** 
+ * @dev Test stub for the implementation of Curve.Fi CRV minter contract.
+ * @dev Original code is located in official repository:
+ * https://github.com/curvefi/curve-dao-contracts/blob/master/contracts/Minter.vy
+ */
 contract Stub_CurveFi_Minter is Initializable, Context, ICurveFi_Minter {
     mapping(address => mapping(address => uint256)) public __minted;
     mapping(address => mapping(address => bool)) public allowed_to_mint_for;

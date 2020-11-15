@@ -1,9 +1,9 @@
 {
-    "name": "erc20-testing",
+    "name": "curve-integration",
     "version": "0.1.0",
-    "description": "Application of token-test-suit",
+    "description": "Integrate Curve.Fi protocol",
     "main": "index.js",
-    "repository": "https://github.com/Midvel/erc20_test_suit.git",
+    "repository": "https://github.com/Midvel/curvefi_adapter.git",
     "scripts": {
         "build": "npx truffle compile",
         "ganache": "npx ganache-cli --gasLimit 0xfffffffffff -e 10000000 --port 8545",
