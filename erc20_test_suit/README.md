@@ -1,3 +1,7 @@
+# Test ERC20
+It is simple example of the usage of token-test-suite library for ERC20 token full test coverage.<br>
+You can find more in the [appropriate article on Medium]().
+
 ## Prerequisites
 
 For development purposes, you will need `Node.js` and a package manager – `npm`. For the development, the following versions were used:
