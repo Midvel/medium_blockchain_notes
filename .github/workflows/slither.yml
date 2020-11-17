@@ -20,13 +20,13 @@ jobs:
       - name: Move to the directory
         run: cd curvefi_adapter
       - name: Install truffle
-        run: npm install truffle
+        run: pwd & npm install truffle
       - name: Install Slither
-        run: pip3 install slither-analyzer
+        run: pwd & pip3 install slither-analyzer
   run-analysis:
     needs: setup-env
     runs-on: ubuntu-latest
     steps:
       - name: Run analysis
-        run: slither .
+        run: pwd & slither .
     
