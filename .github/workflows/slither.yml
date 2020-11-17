@@ -26,9 +26,11 @@ jobs:
         run: pip3 install slither-analyzer
       - name: Run analysis
         run: |
+          pwd
           cd curvefi_adapter
           mkdir output
           slither . > output/slither_report.txt
+          pwd
       - name: Store the report
         uses: actions/upload-artifact@v2
         with:
