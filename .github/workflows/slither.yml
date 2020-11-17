@@ -27,13 +27,12 @@ jobs:
       - name: Run analysis
         run: |
           pwd
-          cd curvefi_adapter
           mkdir output
-          slither . > output/slither_report.txt
+          slither curvefi_adapter >output/slither_report.txt
           pwd
       - name: Store the report
         uses: actions/upload-artifact@v2
         with:
-          name: code-coverage-report
-          path: curvefi_adapter/output/slither_report.txt
+          name: slither-report
+          path: output/slither_report.txt
           
