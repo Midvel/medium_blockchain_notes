@@ -26,6 +26,7 @@ jobs:
         run: pip3 install slither-analyzer
       - name: Run analysis
         run: |
+          cd curvefi_adapter
           pwd
           slither .
           
