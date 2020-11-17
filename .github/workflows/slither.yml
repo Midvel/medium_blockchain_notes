@@ -33,5 +33,5 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage-report
-          path: output/slither_report_*.txt
+          path: curvefi_adapter/output/slither_report_*.txt
           
