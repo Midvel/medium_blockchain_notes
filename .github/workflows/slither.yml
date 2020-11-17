@@ -31,7 +31,6 @@ jobs:
           mkdir output
           touch output/slither_report.txt
           ls
-          slither curvefi_adapter
           pwd
           ls output
       - name: Store the report
