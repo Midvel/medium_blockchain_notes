@@ -28,10 +28,10 @@ jobs:
         run: |
           cd curvefi_adapter
           mkdir output
-          slither . > output/slither_report_$(date +"%Y-%m-%d-%H:%M:%S").txt
+          slither . > output/slither_report.txt
       - name: Store the report
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage-report
-          path: curvefi_adapter/output/slither_report_*.txt
+          path: curvefi_adapter/output/slither_report.txt
           
