@@ -34,7 +34,8 @@ jobs:
           pwd
           ls -la
           ls -la output
-          slither ./curvefi_adapter >>output/slither_report.txt 2>&1 | true
+          slither ./curvefi_adapter >>output/slither_report.txt 2>&1
+          echo $?
           pwd
           ls output
       - name: Store the report
