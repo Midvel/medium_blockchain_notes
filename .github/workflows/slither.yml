@@ -32,7 +32,6 @@ jobs:
     steps:
       - name: Run analysis
         run: |
-          cd curvefi_adapter
           pwd
           slither .
     
