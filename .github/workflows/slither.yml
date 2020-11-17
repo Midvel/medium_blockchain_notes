@@ -27,9 +27,12 @@ jobs:
       - name: Run analysis
         run: |
           pwd
+          ls
           mkdir output
-          slither curvefi_adapter >output/slither_report.txt
+          ls
+          slither curvefi_adapter >>output/slither_report.txt
           pwd
+          ls output
       - name: Store the report
         uses: actions/upload-artifact@v2
         with:
