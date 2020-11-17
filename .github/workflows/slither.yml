@@ -40,5 +40,5 @@ jobs:
         run: |
           APPROVED_WARNIGNS=1
           FOUND_WARNINGS=`grep "\d+ result" -Po output/slither_report.txt | sed 's/ result//g'`
-          echo "Slither has found $FOUND_WARNINGS"
-          if [$FOUND_WARNINGS -gt $APPROVED_WARNIGNS]; then exit(0); fi 
+          echo "Slither has found $FOUND_WARNINGS issues"
+          if [[ $FOUND_WARNINGS -gt $APPROVED_WARNIGNSi ]]; then exit 1; fi
