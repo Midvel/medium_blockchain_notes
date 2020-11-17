@@ -32,7 +32,8 @@ jobs:
         shell: bash
         run: |
           pwd
-          ls
+          ls -la
+          ls -la output
           slither ./curvefi_adapter >>output/slither_report.txt 2>&1
           pwd
           ls output
