@@ -20,27 +20,25 @@ jobs:
       - name: Install truffle
         run:  |
           cd curvefi_adapter
-          pwd
           npm install truffle
       - name: Install Slither
         run: pip3 install slither-analyzer
       - name: Prepare output
         run: |
           mkdir output
-          touch output/slither_report.txt
       - name: Run analysis
         shell: bash
         run: |
-          pwd
-          ls -la
-          ls -la output
-          slither ./curvefi_adapter >>output/slither_report.txt 2>&1 || true
-          echo $?
-          pwd
-          ls output
+          slither ./curvefi_adapter --filter-paths "openzeppelin|test" --exclude naming-convention >>output/slither_report.txt 2>&1 || true
       - name: Store the report
         uses: actions/upload-artifact@v2
         with:
           name: slither-report
           path: output/slither_report.txt
-          
+      - name: Check status
+        shell: bash
+        run: |
+          APPROVED_WARNIGNS=1
+          FOUND_WARNINGS=`grep "\d+ result" -Po output/slither_report.txt | sed 's/ result//g'`
+          echo "Slither has found $FOUND_WARNINGS"
+          if [$FOUND_WARNINGS -gt $APPROVED_WARNIGNS]; then exit(0); fi 
