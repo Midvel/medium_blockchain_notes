@@ -1,0 +1,32 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Slither-check
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the release-1.0 branch
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  setup-env:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1.4.4
+      - uses: actions/setup-python@v2
+      - name: Move to the directory
+        run: cd curvefi_adapter
+      - name: Install truffle
+        run: npm install truffle
+      - name: Install Slither
+        run: pip3 install slither-analyzer
+  run-analysis:
+    needs: setup-env
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run analysis
+        run: slither .
+    
