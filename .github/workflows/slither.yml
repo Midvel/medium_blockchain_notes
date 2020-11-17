@@ -17,10 +17,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1.4.4
       - uses: actions/setup-python@v2
-      - name: Move to the directory
-        run: cd curvefi_adapter
       - name: Install truffle
-        run: pwd & npm install truffle
+        run:  cd curvefi_adapter & pwd & npm install truffle
       - name: Install Slither
         run: pwd & pip3 install slither-analyzer
   run-analysis:
@@ -28,5 +26,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run analysis
-        run: pwd & slither .
+        run: cd curvefi_adapter & pwd & slither .
     
