@@ -24,13 +24,16 @@ jobs:
           npm install truffle
       - name: Install Slither
         run: pip3 install slither-analyzer
+      - name: Prepare output
+        run: |
+          mkdir output
+          touch output/slither_report.txt
       - name: Run analysis
+        shell: bash
         run: |
           pwd
           ls
-          mkdir output
-          touch output/slither_report.txt
-          ls
+          slither curvefi_adapter >>output/slither_report.txt
           pwd
           ls output
       - name: Store the report
