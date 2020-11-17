@@ -33,7 +33,7 @@ jobs:
         run: |
           pwd
           ls
-          slither curvefi_adapter >>output/slither_report.txt
+          slither curvefi_adapter >>output/slither_report.txt 2>&1
           pwd
           ls output
       - name: Store the report
