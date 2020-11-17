@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Slither-check
+name: Security-checks
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the release-1.0 branch
@@ -11,7 +11,7 @@ on:
     branches: [ main ]
 
 jobs:
-  setup-env:
+  slither:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,15 +23,9 @@ jobs:
           pwd
           npm install truffle
       - name: Install Slither
-        run: |
-          pwd
-          pip3 install slither-analyzer
-  run-analysis:
-    needs: setup-env
-    runs-on: ubuntu-latest
-    steps:
+        run: pip3 install slither-analyzer
       - name: Run analysis
         run: |
           pwd
           slither .
-    
+          
