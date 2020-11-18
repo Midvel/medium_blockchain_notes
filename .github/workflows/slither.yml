@@ -7,8 +7,12 @@ name: Security-checks
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'curvefi_adapter/**' 
   pull_request:
     branches: [ main ]
+    paths:
+      - 'curvefi_adapter/**' 
 
 jobs:
   slither:
