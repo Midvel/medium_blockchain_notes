@@ -26,7 +26,7 @@ contract MoneyToCurve is Initializable, Context, Ownable {
     address public curveFi_CRVMinter;
     address public curveFi_CRVToken;
     
-    function initialize() public initializer {
+    function initialize() external initializer {
         Ownable.initialize(_msgSender());
     }
 
@@ -36,7 +36,7 @@ contract MoneyToCurve is Initializable, Context, Ownable {
      * @param _gaugeContract CurveFi Gauge contract for Y-pool
      * @param _minterContract CurveFi CRV minter
      */
-    function setup(address _depositContract, address _gaugeContract, address _minterContract) public onlyOwner {
+    function setup(address _depositContract, address _gaugeContract, address _minterContract) external onlyOwner {
         require(_depositContract != address(0), "Incorrect deposit contract address");
 
         curveFi_Deposit = _depositContract;
@@ -172,7 +172,7 @@ contract MoneyToCurve is Initializable, Context, Ownable {
 
         for (uint256 i = 0; i < stablecoins.length; i++) {
             //Get Y-tokens balance
-            uint256 yLPTokenBalance =  ICurveFi_SwapY(curveFi_Swap).balances(int128(i));
+            uint256 yLPTokenBalance = ICurveFi_SwapY(curveFi_Swap).balances(int128(i));
             address yCoin = ICurveFi_SwapY(curveFi_Swap).coins(int128(i));
 
             //Calculate user's shares in y-tokens
