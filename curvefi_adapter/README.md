@@ -1,6 +1,6 @@
 # CurveFi integration
 It is an example of integration of payment channel to CurveFi Y-pool into you defi application.<br>
-You can find more in the [appropriate article on Medium]().<br>
+You can find more in the [appropriate article on Medium](https://medium.com/better-programming/how-to-integrate-the-curve-fi-protocol-into-your-defi-protocol-e1d4c43f716d).<br>
 All stubs for Curve.Fi smart-contracts are written over their Vyper implementations in official Curve.Fi repositories: [contracts](https://github.com/curvefi/curve-contract) and [DAO contracts](https://github.com/curvefi/curve-dao-contracts).<br>
 Contracts are written in demostration purposes only so are potentially unsafe. Use them as references and test examples only.
 
