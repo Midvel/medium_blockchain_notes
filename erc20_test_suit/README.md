@@ -1,6 +1,6 @@
 # Test ERC20
 It is simple example of the usage of token-test-suite library for ERC20 token full test coverage.<br>
-You can find more in the [appropriate article on Medium]().
+You can find more in the [appropriate article on Medium](https://medium.com/better-programming/lets-talk-about-smart-contract-unit-testing-1317a2d2365a).
 
 ## Prerequisites
 
