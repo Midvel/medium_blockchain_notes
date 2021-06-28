@@ -1,4 +1,4 @@
-# CurveFi integration
+# ECDSA signature testing
 It is an example of testing the signature based functionality.<br>
 You can find more in the [appropriate article on Medium](link here).<br>
 Contracts are written in demostration purposes only so are potentially unsafe. Use them as references and test examples only.
