@@ -1,0 +1,46 @@
+ {
+  "name": "sig-test",
+  "version": "0.1.0",
+  "description": "Signature Testing",
+  "author": "Pavlo Horbonos",
+  "main": "index.js",
+  "scripts": {
+    "compile": "npx truffle compile --all",
+    "ganache": "npx ganache-cli --gasLimit 6721975 --gasPrice 20000000000 -e 10000000 -p 8545 -a 20",
+    "test": "npx truffle test --network development",
+    "generate-abi": "npx truffle-abi -o ./abi",
+    "dev:lint": "npx eslint . && npx solhint contracts/**/*.sol",
+    "dev:coverage": "npx truffle run coverage --network coverage --solcoverjs ./.solcover.js",
+    "dev:contract-size": "npx truffle run contract-size",
+    "dev:docgen": "npx solidity-docgen -i ./contracts -o ./docs -t docgen --solc-module solc-0.7 -H docgen/helpers.js",
+    "postinstall": "npm run compile && npm run generate-abi"
+  },
+  "repository": {
+    "type": "git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.1.0",
+    "@truffle/hdwallet-provider": "^1.0.44",
+    "ethers": "^5.2.0",
+    "ganache-cli": "^6.12.2",
+    "openzeppelin-test-helpers": "^0.5.1",
+    "solidity-docgen": "^0.5.11",
+    "truffle": "^5.2.3",
+    "truffle-assertions": "^0.9.2",
+    "web3": "^1.2.11"
+  },
+  "devDependencies": {
+    "bignumber.js": "^9.0.1",
+    "chai": "^4.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "ganache-time-traveler": "^1.0.15",
+    "mocha": "^8.1.3",
+    "solhint": "^3.2.0",
+    "solidity-coverage": "^0.7.10",
+    "truffle-contract-size": "^2.0.0"
+  }
+}
