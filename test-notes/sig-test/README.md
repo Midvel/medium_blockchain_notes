@@ -1,6 +1,6 @@
 # ECDSA signature testing
 It is an example of testing the signature based functionality.<br>
-You can find more in the [appropriate article on Medium](link here).<br>
+You can find more in the [appropriate article on Medium](https://betterprogramming.pub/secure-and-test-the-contract-with-ecdsa-signature-3ff368a479a6).<br>
 Contracts are written in demostration purposes only so are potentially unsafe. Use them as references and test examples only.
 
 ## Prerequisites
